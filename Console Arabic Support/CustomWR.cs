@@ -295,6 +295,30 @@ namespace Console_Arabic_Support
             base.Write(charArray, index, count);
         }
 
+#if NETCOREAPP
+
+        public override void WriteLine(string value)
+        {
+            base.WriteLine(_arb.ProcessInput(value));
+        }
+
+        public override void WriteLine(char[] buffer, int index, int count)
+        {
+            var charArray = _arb.ProcessInput(new string(buffer));
+            if (charArray.Length > 0)
+            {
+                count = charArray.Length;
+            }
+            base.WriteLine(charArray, index, count);
+        }
+
+        public override void WriteLine(char[] buffer)
+        {
+            base.WriteLine(_arb.ProcessInput(new string(buffer)));
+        }
+
+#endif
+
         #endregion OverridedMethods
 
         public override Encoding Encoding => Encoding.UTF8;
