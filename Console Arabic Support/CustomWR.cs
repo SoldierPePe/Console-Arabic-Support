@@ -264,11 +264,12 @@ namespace Console_Arabic_Support
             }
         }
 
-        public static void InitAr(string fontName = "Arial", short fontSize = 25, int width = 108, int height = 30)
+        public static void InitAr(string fontName = "Simplifed Arabic", short fontSize = 20, int width = 80, int height = 25)
         {
             var standardOutput = new CustomWr(Console.OpenStandardOutput()) { AutoFlush = true };
             SetConsoleFont(fontName, fontSize);
             Console.OutputEncoding = Encoding.UTF8;
+            Console.InputEncoding = Encoding.Unicode;
             Console.SetWindowSize(width, height);
             Console.SetOut(standardOutput);
         }
