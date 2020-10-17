@@ -251,14 +251,12 @@ namespace Console_Arabic_Support
                     var info = new ConsoleFontInfoEx();
                     info.cbSize = (uint)Marshal.SizeOf(info);
 
-                    // Set console font to Lucida Console.
                     var newInfo = new ConsoleFontInfoEx();
                     newInfo.cbSize = (uint)Marshal.SizeOf(newInfo);
                     newInfo.FontFamily = TmpfTruetype;
                     var ptr = new IntPtr(newInfo.FaceName);
                     Marshal.Copy(fontName.ToCharArray(), 0, ptr, fontName.Length);
 
-                    // Get some settings from current font.
                     newInfo.dwFontSize = new Coord(info.dwFontSize.X, fontSize/*info.dwFontSize.Y*/);
                     newInfo.FontWeight = info.FontWeight;
                     SetCurrentConsoleFontEx(hnd, false, ref newInfo);
